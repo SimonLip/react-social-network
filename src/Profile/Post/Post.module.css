@@ -1,0 +1,9 @@
+.content {
+    grid-area: content;
+    background-color: cornflowerblue;
+}
+
+.content img {
+    width: 50%;
+    width: 50px;
+}

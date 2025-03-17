@@ -11,25 +11,7 @@
     "nav content";
 }
 
-.header {
-  grid-area: header;
-  background-color: green;
-}
-
-.header img {
-  width: 90px;
-}
-
-.nav {
-  grid-area: nav;
-  background-color: burlywood;
-}
-
-.content {
+.app-wrapper-content {
   grid-area: content;
   background-color: cornflowerblue;
-}
-
-.content img {
-  width: 50%;
 }
