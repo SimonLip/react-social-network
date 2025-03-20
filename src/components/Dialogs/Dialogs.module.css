@@ -1,0 +1,33 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+}
+
+.dialog{
+    padding: 10px;
+}
+
+.dialogItems {
+    color: gold;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}
+
+.dialogItems a {
+    padding-top: 9px;
+    padding-left: 10px;
+    color: gold;
+    text-decoration: none;
+}
+
+.messages {
+    color: gold;
+    grid-template-columns: 1fr;
+}
+
+.messageItems {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}

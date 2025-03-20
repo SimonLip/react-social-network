@@ -1,0 +1,28 @@
+.item {
+    display: grid;
+    grid-template-areas: 
+        "Avatar Text"
+        "Likes Likes";
+    grid-template-columns: auto 1fr; /* Встановлює колонки: перша для аватара, друга — для тексту */
+    grid-template-rows: auto 1fr;
+    gap: 8px; /* Відстань між елементами */
+    align-items: center; /* Вирівнює по центру */
+    margin: 10px;
+}
+
+.item img {
+    grid-area: Avatar;
+    width: 50px; /* Розмір аватара */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.message {
+    grid-area: Text;
+    text-align: start;
+}
+
+.likesCount {
+    grid-area: Likes;
+}
