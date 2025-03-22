@@ -1,0 +1,23 @@
+.friends {
+    grid-area: navfriends;
+    background-color: burlywood;
+}
+
+.friendsItem {
+    display: grid;
+    grid-template-columns: 1fr; 
+    margin-top: 550px;
+}
+
+.friendsItem a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+} 
+
+a.active {
+    color: gold;
+    font-weight: bold;
+}
