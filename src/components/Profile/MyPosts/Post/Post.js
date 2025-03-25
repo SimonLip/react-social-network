@@ -4,7 +4,10 @@ import classes from './Post.module.css';
 const Post = (props) => {
     return (
         <div className={classes.item}>
-            <img src="https://i.ytimg.com/vi/Bor5lkRyeGo/hqdefault.jpg" alt="avatar" />
+            <img
+                src="https://i.ytimg.com/vi/Bor5lkRyeGo/hqdefault.jpg"
+                alt="avatar"
+            />
             <div className={classes.message}>
                 {props.message}
             </div>
