@@ -6,11 +6,11 @@ import DialogMessage from './DialogMessages/DialogMessage';
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogsPage.dialogs.map(dialog => (
+    let dialogsElements = props.dialogsPage.getDialogs().map(dialog => (
         < DialogItem className={classes.DialogItem} key={dialog.id} name={dialog.name} id={dialog.id} />
     ));
 
-    let messagesElements = props.dialogsPage.messages.map(message => (
+    let messagesElements = props.dialogsPage.getMessages().map(message => (
         < DialogMessage key={message.id} message={message.message} />
     ));
 
