@@ -1,15 +1,15 @@
-.friends {
+.navbar {
     grid-area: navfriends;
     background-color: burlywood;
 }
 
-.friendsItem {
+.navbarItem {
     display: grid;
     grid-template-columns: 1fr; 
     margin-top: 550px;
 }
 
-.friendsItem a {
+.navbarItem a {
     text-decoration: none;
     color: white;
     font-size: 1.5rem;

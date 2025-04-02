@@ -4,13 +4,13 @@ import NavbarFriendsItem from "./NavbarFriendsItem/NavbarFriendsItem";
 
 const NavbarFriendsList = (props) => {
 
-    let navbarFriends = props.state.getDialogs().map(dialog => (
-        < NavbarFriendsItem className={classes.DialogItem} key={dialog.id} name={dialog.name} id={dialog.id} />
+    let navbarFriends = props.sidebar.getSidebarDialogs().map(dialog => (
+        < NavbarFriendsItem className={classes.NavbarItem} key={dialog.id} name={dialog.name} id={dialog.id} />
     ));
 
     return (
-        <div className={classes.friends}>
-            <div className={classes.friendsItem}>
+        <div className={classes.navbar}>
+            <div className={classes.navbarItem}>
                 {navbarFriends}
             </div>
         </div>

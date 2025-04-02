@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import NavbarFriendsList from './NavbarFriendsList/NavbarFriendsList';
 
 const Navbar = (props) => {
+    
   return (
     <nav className={classes.nav}>
       <div className={classes.item}>
@@ -41,7 +42,7 @@ const Navbar = (props) => {
           Settings
         </NavLink>
       </div>
-      <NavbarFriendsList state={props.state} />
+      <NavbarFriendsList sidebar={props.sidebar} />
     </nav>
   );
 }
