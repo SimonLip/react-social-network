@@ -1,35 +1,53 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from './Users.module.css';
+import axios from "axios";
+import userPhoto from '../../img/ava-empty.jpg';
 
 let Users = (props) => {
-    return <div>
-        {
 
-            props.users.map(u => <div key={u.id} >
-                <span>
-                    <div>
-                        <img src={u.photoUrl} className={classes.userPhoto}/>
-                    </div>
-                    <div>
-                        {u.followed 
-                        ? <button onClick={ () => {props.unfollow(u.id) } }>Unfollow</button> 
-                        : <button onClick={ () => {props.follow(u.id) } }>Follow</button>}
-                    </div>
-                </span>
-                <span>
+
+    // if (props.users.length === 0) {
+
+
+    useEffect(() => {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => {
+                props.setUsers(response.data.items);
+            });
+    }, []);
+
+    return (
+        <div>
+            {props.users.map(u => (
+                <div key={u.id}>
                     <span>
-                        <div>{u.fullName}</div>
-                        <div>{u.status}</div>
+                        <div>
+                            <img
+                                src={u.photos?.small || userPhoto}
+                                className={classes.userPhoto}
+                                alt="user avatar"
+                            />
+                        </div>
+                        <div>
+                            {u.followed
+                                ? <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
+                                : <button onClick={() => { props.follow(u.id) }}>Follow</button>}
+                        </div>
                     </span>
                     <span>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                        <span>
+                            <div>{u.name}</div>
+                            <div>{u.status || "No status"}</div>
+                        </span>
+                        <span>
+                            <div>Country not provided</div>
+                            <div>City not provided</div>
+                        </span>
                     </span>
-                </span>
-
-            </div>)
-        }
-    </div>
+                </div>
+            ))}
+        </div>
+    );
 }
 
 export default Users;

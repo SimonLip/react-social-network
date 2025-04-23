@@ -4,28 +4,7 @@ const SET_USERS = 'SET-USERS'
 
 
 let initialState = {
-    users: [
-        {
-            id: 1, photoUrl: 'https://i.ytimg.com/vi/Bor5lkRyeGo/hqdefault.jpg',
-            followed: true, fullName: "Artem", status: "I like DnD",
-            location: { city: "Dnipro", country: "Ukraine" }
-        },
-        {
-            id: 2, photoUrl: 'https://i.ytimg.com/vi/Bor5lkRyeGo/hqdefault.jpg',
-            followed: false, fullName: "Stas", status: "I like chess",
-            location: { city: "Chernihiv", country: "Ukraine" }
-        },
-        {
-            id: 3, photoUrl: 'https://i.ytimg.com/vi/Bor5lkRyeGo/hqdefault.jpg',
-            followed: false, fullName: "Oxana", status: "I like flovers",
-            location: { city: "Chernihiv", country: "Ukraine" }
-        },
-        {
-            id: 4, photoUrl: 'https://i.ytimg.com/vi/Bor5lkRyeGo/hqdefault.jpg',
-            followed: true, fullName: "Illya", status: "I like cats",
-            location: { city: "Kyiv", country: "Ukraine" }
-        },
-    ],
+    users: [],
 
 };
 
@@ -81,6 +60,7 @@ export const unfollowAC = (userId) => ({
 
 export const setUsersAC = (users) => ({
     type: SET_USERS,
+    users,
 });
 
 export default usersReducer;
