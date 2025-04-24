@@ -1,20 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import classes from './Users.module.css';
-import axios from "axios";
 import userPhoto from '../../img/ava-empty.jpg';
 
 let Users = (props) => {
+  
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
+    let pages = [];
+    const visiblePages = new Set();
 
-    // if (props.users.length === 0) {
+    visiblePages.add(1);
+    visiblePages.add(pagesCount);
 
+    for (let i = props.currentPage - 1; i <= props.currentPage + 1; i++) {
+        if (i > 1 && i < pagesCount) {
+            visiblePages.add(i);
+        }
+    }
 
-    useEffect(() => {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
-            .then(response => {
-                props.setUsers(response.data.items);
-            });
-    }, []);
+    pages = Array.from(visiblePages).sort((a, b) => a - b);
 
     return (
         <div>
@@ -30,8 +34,12 @@ let Users = (props) => {
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
-                                : <button onClick={() => { props.follow(u.id) }}>Follow</button>}
+                                ? <button className={classes.followButton} onClick={() => { props.unfollow(u.id) }}>
+                                    Unfollow
+                                </button>
+                                : <button className={classes.followButton} onClick={() => { props.follow(u.id) }}>
+                                    Follow
+                                </button>}
                         </div>
                     </span>
                     <span>
@@ -44,10 +52,29 @@ let Users = (props) => {
                             <div>City not provided</div>
                         </span>
                     </span>
+
                 </div>
+
             ))}
+            <div>
+                {pages.map((pageNumber, index) => {
+                    const prevPage = pages[index - 1];
+                    const needDots = prevPage && pageNumber - prevPage > 1;
+
+                    return (
+                        <React.Fragment key={pageNumber}>
+                            {needDots && <span className={classes.dots}>...</span>}
+                            <button className={props.currentPage === pageNumber ? classes.selectedPage : classes.pageButton}
+                                onClick={() => props.onPageChanged(pageNumber)}>
+                                {pageNumber}
+                            </button>
+                        </React.Fragment>
+                    );
+                })}
+            </div>
         </div>
     );
 }
+
 
 export default Users;
