@@ -1,45 +1,59 @@
 .content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    font-family: Arial, sans-serif;
 }
 
-.content img {
+.headerImage {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover; /* Збереження співвідношення сторін з обрізанням */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 300px;
+    object-fit: cover;
+    
 }
 
 .descriptionBlock {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -60px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    font-size: 18px;
+    
 }
 
-@media (max-width: 768px) {
-    .content {
-        padding: 10px;
-    }
-
-    .descriptionBlock {
-        padding: 15px;
-    }
+.descriptionBlock img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
 }
 
-@media (max-width: 480px) {
-    .content {
-        padding: 5px;
-    }
+.descriptionBlock .userName {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+    
+}
 
-    .descriptionBlock {
-        padding: 10px;
-    }
+.descriptionBlock .userDescription {
+    font-size: 16px;
+    color: #777;
+    margin-top: 5px;
+    
+}
+
+.descriptionBlock .noAvatar {
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 10px;
+    font-style: italic;
+    
 }

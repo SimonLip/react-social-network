@@ -23,21 +23,17 @@
 
 .dialogsTextarea {
     width: 100%;
-    /* Встановлює ширину текстового поля на 100% */
     height: 100px;
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
     resize: none;
-    /* Забороняє зміну розміру текстового поля */
     box-sizing: border-box;
-    /* Включає padding та border в загальний розмір елемента */
 }
 
 .dialogsTextarea:focus {
     border-color: #007bff;
-    /* Зміна кольору рамки при фокусуванні */
 }
 
 .dialogsButton[type="button"] {
@@ -88,7 +84,6 @@
     font-size: 18px;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .dialogs {
         flex-direction: column;
@@ -109,9 +104,7 @@
 
     .dialogsTextarea {
         height: 80px;
-        /* Зменшення висоти поля на менших екранах */
         font-size: 14px;
-        /* Зменшення шрифта */
     }
 
     .dialogsButton[type="button"] {
@@ -132,9 +125,7 @@
 
     .dialogsTextarea {
         height: 70px;
-        /* Зменшення висоти поля для дуже малих екранів */
         font-size: 12px;
-        /* Зменшення шрифта для ще менших екранів */
     }
 
     .dialogsButton[type="button"] {
