@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import { Route, Routes } from 'react-router-dom';
@@ -10,10 +10,13 @@ import UsersContainer from './components/Users/UsersContainer';
 const App = (props) => {
   return (
     <div className='app-wrapper'>
-      <Header />
+      <HeaderContainer />
       <Navbar sidebar={props.state.sidebar} />
       <div className='app-wrapper-content'>
         <Routes>
+          <Route path='/' element={
+            <ProfileContainer store={props.store} />
+          } />
           <Route path='/profile' element={
             <ProfileContainer store={props.store} />
           } />
