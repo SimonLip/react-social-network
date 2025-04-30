@@ -1,11 +1,12 @@
 import React from "react";
 import classes from './Post.module.css';
+import userPhoto from "../../../../img/ava-empty.jpg";
 
 const Post = (props) => {
     return (
         <div className={classes.item}>
             <img
-                src="https://i.ytimg.com/vi/Bor5lkRyeGo/hqdefault.jpg"
+                src={userPhoto}
                 alt="avatar"
             />
             <div className={classes.message}>

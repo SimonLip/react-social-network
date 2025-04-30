@@ -77,3 +77,12 @@
     transform: scale(1.05); 
     background-color: #cce7ff; 
 }
+
+.followButton:disabled {
+    background-color: #e5e7eb;
+    color: #9ca3af;
+    border-color: #d1d5db;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+}

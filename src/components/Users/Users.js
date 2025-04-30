@@ -2,8 +2,31 @@ import React from "react";
 import classes from './Users.module.css';
 import userPhoto from '../../img/ava-empty.jpg';
 import { NavLink } from "react-router-dom";
+import { usersAPI } from "../../API/API";
+
 
 let Users = (props) => {
+
+    const handleFollow = (userId) => {
+        props.toggleIsFollowingProgress(true, userId);
+        usersAPI.followUser(userId).then(response => {
+            if (response.data.resultCode === 0) {
+                props.follow(userId);
+                props.toggleIsFollowingProgress(false, userId);
+            }
+        });
+    };
+
+    const handleUnfollow = (userId) => {
+        props.toggleIsFollowingProgress(true, userId);
+        usersAPI.unfollowUser(userId).then(response => {
+            if (response.data.resultCode === 0) {
+                props.unfollow(userId);
+                props.toggleIsFollowingProgress(false, userId);
+            }
+        });
+    };
+
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
@@ -36,13 +59,25 @@ let Users = (props) => {
                             </NavLink>
                         </div>
                         <div>
-                            {u.followed
-                                ? <button className={classes.followButton} onClick={() => { props.unfollow(u.id) }}>
+                            {u.followed ? (
+                                <button
+                                    disabled={props.followingProgress.includes(u.id)}
+                                    className={classes.followButton}
+                                    onClick={() => handleUnfollow(u.id)}
+                                >
                                     Unfollow
                                 </button>
-                                : <button className={classes.followButton} onClick={() => { props.follow(u.id) }}>
+
+                            ) : (
+                                <button
+                                    disabled={props.followingProgress.includes(u.id)}
+                                    className={classes.followButton}
+                                    onClick={() => handleFollow(u.id)}
+                                >
                                     Follow
-                                </button>}
+                                </button>
+
+                            )}  
                         </div>
                     </span>
                     <span>
@@ -56,7 +91,7 @@ let Users = (props) => {
                         </span>
                     </span>
 
-                </div>
+                </div >
 
             ))}
             <div>
@@ -75,7 +110,7 @@ let Users = (props) => {
                     );
                 })}
             </div>
-        </div>
+        </div >
     );
 }
 

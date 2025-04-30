@@ -17,11 +17,13 @@ const Header = (props) => {
                 {props.isAuth ? (
                     <>
                         {props.login}
-                        <img
-                            src={props.profile?.photos?.large || userPhoto}
-                            alt="avatar"
-                            className={classes.avatar}
-                        />
+                        <NavLink to='/profile'>
+                            <img
+                                src={props.profile?.photos?.large || userPhoto}
+                                alt="avatar"
+                                className={classes.avatar}
+                            />
+                        </NavLink>
                     </>
                 ) : (
                     <NavLink to='/login'>Login</NavLink>

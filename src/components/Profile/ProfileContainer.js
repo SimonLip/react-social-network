@@ -1,28 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Profile from "./Profile";
-import axios from "axios";
 import { connect } from "react-redux";
 import { setUsersProfile } from "../../redux/profileReducer";
 import { useParams } from "react-router-dom";
+import { profileAPI, authAPI } from "../../API/API";
 
 let ProfileContainer = (props) => {
     const { userId } = useParams();
-
-    const profileId = userId || 32360;
+    const [authUserId, setAuthUserId] = useState(null);
 
     useEffect(() => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${profileId}`)
-            .then(response => {
-                props.setUsersProfile(response.data);
+        if (!userId) {
+            authAPI.me().then(response => {
+                if (response.data.resultCode === 0) {
+                    const id = response.data.data.id;
+                    setAuthUserId(id);
+                }
             });
+        }
+    }, [userId]);
+
+    const profileId = userId || authUserId;
+
+    useEffect(() => {
+        if (profileId) {
+            profileAPI.getProfile(profileId).then(data => {
+                props.setUsersProfile(data);
+            });
+        }
     }, [profileId]);
-    
-    return (
-        <Profile {...props} profile={props.profile} />
-    );
+
+    return <Profile {...props} profile={props.profile} />;
 };
 
-let mapStateToProps = (state) => ({
+const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
 });
 
