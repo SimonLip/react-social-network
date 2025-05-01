@@ -7,28 +7,19 @@ import {
     follow, setUsers,
     unfollow, setCurrentPage,
     setTotalUsersCount, toggleIsFetching,
-    toggleIsFollowingProgress
+    toggleIsFollowingProgress, getUsersThunkCreator
 } from "../../redux/usersReducer";
 
 
 let UsersContainer = (props) => {
 
     useEffect(() => {
-        fetchUsers(props.currentPage);
+        props.getUsersThunkCreator(props.currentPage, props.pageSize);
     }, [props.pageSize]);
-
-    const fetchUsers = (page) => {
-        props.toggleIsFetching(true);
-        usersAPI.getUsers(page, props.pageSize).then(data => {
-            props.toggleIsFetching(false);
-            props.setUsers(data.items);
-            props.setTotalUsersCount(data.totalCount);
-        });
-    };
-
+    
     const onPageChanged = (pageNumber) => {
         props.setCurrentPage(pageNumber);
-        fetchUsers(pageNumber);
+        props.getUsersThunkCreator(pageNumber, props.pageSize);
     };
 
     return (
@@ -70,5 +61,6 @@ export default connect(mapStateToProps,
         setTotalUsersCount,
         toggleIsFetching,
         toggleIsFollowingProgress,
+        getUsersThunkCreator,
     })
     (UsersContainer);
