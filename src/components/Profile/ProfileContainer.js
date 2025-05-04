@@ -24,6 +24,7 @@ let ProfileContainer = (props) => {
 
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth,
 });
 
 export default connect(mapStateToProps,

@@ -2,9 +2,14 @@ import React from "react";
 import classes from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
-import Loader from "../Loader/Loader";
+import { Navigate } from 'react-router-dom';
+
 
 const Profile = (props) => {
+
+    if (!props.isAuth) {
+        return <Navigate to='/login' replace/>
+    };
 
     return (
         <div className={classes.content}>
