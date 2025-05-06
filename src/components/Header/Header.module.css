@@ -1,14 +1,11 @@
-/* Header.module.css */
-
-/* Загальні стилі для хедера */
 .header {
     grid-area: header;
-    background-color: #1e1e1e; /* темний фон */
+    background-color: #1e1e1e; 
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тінь */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .logo {
@@ -18,7 +15,7 @@
 }
 
 .logo:hover {
-    transform: scale(1.1); /* Логотип збільшується при наведенні */
+    transform: scale(1.1); 
 }
 
 .loginBlock {
