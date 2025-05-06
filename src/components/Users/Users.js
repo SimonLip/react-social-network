@@ -3,14 +3,9 @@ import classes from './Users.module.css';
 import userPhoto from '../../img/ava-empty.jpg';
 import { NavLink } from "react-router-dom";
 import { usersAPI } from "../../API/API";
-import { Navigate } from 'react-router-dom';
 
 
 let Users = (props) => {
-
-    if (!props.isAuth) {
-        return <Navigate to='/login' replace/>
-    };
 
     const handleFollow = (userId) => {
         props.toggleIsFollowingProgress(true, userId);

@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Users from "./Users";
 import Loader from "../Loader/Loader";
-import { usersAPI } from "../../API/API";
+import withAuthRedirect from "../../Hocs/withAuthRedirect";
+import withTopScroll from "../../Hocs/withTopScroll";
+import { compose } from "redux";
 import {
     follow, setUsers,
     unfollow, setCurrentPage,
@@ -16,7 +18,7 @@ let UsersContainer = (props) => {
     useEffect(() => {
         props.getUsersThunkCreator(props.currentPage, props.pageSize);
     }, [props.pageSize]);
-    
+
     const onPageChanged = (pageNumber) => {
         props.setCurrentPage(pageNumber);
         props.getUsersThunkCreator(pageNumber, props.pageSize);
@@ -48,20 +50,23 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingProgress: state.usersPage.followingInProgress,
-        isAuth: state.auth.isAuth, 
 
     }
 }
 
-export default connect(mapStateToProps,
-    {
-        follow,
-        unfollow,
-        setUsers,
-        setCurrentPage,
-        setTotalUsersCount,
-        toggleIsFetching,
-        toggleIsFollowingProgress,
-        getUsersThunkCreator,
-    })
+export default compose(
+    connect(mapStateToProps,
+        {
+            follow,
+            unfollow,
+            setUsers,
+            setCurrentPage,
+            setTotalUsersCount,
+            toggleIsFetching,
+            toggleIsFollowingProgress,
+            getUsersThunkCreator,
+        }),
+    withAuthRedirect,
+    withTopScroll,)
     (UsersContainer);
+

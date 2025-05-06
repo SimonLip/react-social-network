@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getUserProfileThunk, getAuthUserIdThunk } from "../../redux/profileReducer";
+import withAuthRedirect from "../../Hocs/withAuthRedirect";
+import withTopScroll from "../../Hocs/withTopScroll";
+import { compose } from "redux";
 
 let ProfileContainer = (props) => {
     const { userId } = useParams();
@@ -24,12 +27,15 @@ let ProfileContainer = (props) => {
 
 const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
+    
 });
 
-export default connect(mapStateToProps,
-    {
-        getUserProfileThunk,
-        getAuthUserIdThunk
-    }
-)(ProfileContainer);
+export default compose(
+    connect(mapStateToProps,
+        {
+            getUserProfileThunk,
+            getAuthUserIdThunk
+        }), 
+    withAuthRedirect,
+    withTopScroll,
+) (ProfileContainer);
