@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-social-network/static/css/main.f935e0af.css",
+    "main.js": "/react-social-network/static/js/main.7b2f702c.js",
+    "static/media/ava-empty.jpg": "/react-social-network/static/media/ava-empty.bc84e631657f12e1557a.jpg",
+    "static/media/loader.svg": "/react-social-network/static/media/loader.56b68cd069eee56eb0ee569594ee384a.svg",
+    "index.html": "/react-social-network/index.html",
+    "main.f935e0af.css.map": "/react-social-network/static/css/main.f935e0af.css.map",
+    "main.7b2f702c.js.map": "/react-social-network/static/js/main.7b2f702c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f935e0af.css",
+    "static/js/main.7b2f702c.js"
+  ]
+}
