@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./ProfileInfo.module.css";
 import Loader from "../../Loader/Loader";
 import userPhoto from "../../../img/ava-empty.jpg";
+import ProfileStatus from "../ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
     const [isImageModalOpen, setIsImageModalOpen] = useState(false); // Стан для відкриття/закриття модалки
@@ -35,7 +36,7 @@ const ProfileInfo = (props) => {
             <div className={classes.descriptionBlock}>
                 <div
                     className={classes.avatarContainer}
-                    onClick={() => openImageModal(props.profile.photos?.large || userPhoto)} // Викликаємо модалку при кліку на аватар
+                    onClick={() => openImageModal(props.profile.photos?.large || userPhoto)} 
                 >
                     <img
                         src={props.profile.photos?.large || userPhoto}
@@ -48,7 +49,7 @@ const ProfileInfo = (props) => {
                     {props.profile.fullName || "User Name"}
                 </div>
                 <div className={classes.userDescription}>
-                    {props.profile.aboutMe || "No description available"}
+                    <ProfileStatus status={ "Hello" }/>
                 </div>
             </div>
 
