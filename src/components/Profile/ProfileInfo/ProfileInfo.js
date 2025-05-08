@@ -3,6 +3,7 @@ import classes from "./ProfileInfo.module.css";
 import Loader from "../../Loader/Loader";
 import userPhoto from "../../../img/ava-empty.jpg";
 import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import backgroundImage from "../../../img/React.jpg";
 
 const ProfileInfo = (props) => {
     const [isImageModalOpen, setIsImageModalOpen] = useState(false); // Стан для відкриття/закриття модалки
@@ -28,7 +29,7 @@ const ProfileInfo = (props) => {
             <div>
                 <img
                     className={classes.headerImage}
-                    src="https://www.w3schools.com/howto/img_snow_wide.jpg"
+                    src={backgroundImage}
                     alt="Header"
                 />
             </div>
