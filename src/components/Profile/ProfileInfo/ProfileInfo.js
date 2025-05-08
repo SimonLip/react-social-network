@@ -36,7 +36,7 @@ const ProfileInfo = (props) => {
             <div className={classes.descriptionBlock}>
                 <div
                     className={classes.avatarContainer}
-                    onClick={() => openImageModal(props.profile.photos?.large || userPhoto)} 
+                    onClick={() => openImageModal(props.profile.photos?.large || userPhoto)}
                 >
                     <img
                         src={props.profile.photos?.large || userPhoto}
@@ -49,7 +49,12 @@ const ProfileInfo = (props) => {
                     {props.profile.fullName || "User Name"}
                 </div>
                 <div className={classes.userDescription}>
-                    <ProfileStatus status={ "Hello" }/>
+                    <ProfileStatus
+                        isOwner={props.isOwner}
+                        status={props.status}
+                        updateStatus={props.updateStatus}
+                    />
+
                 </div>
             </div>
 

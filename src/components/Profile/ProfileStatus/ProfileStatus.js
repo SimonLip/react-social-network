@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const ProfileStatus = (props) => {
+const ProfileStatus = ({ status: propStatus, updateStatus, isOwner }) => {
     const [editMode, setEditMode] = useState(false);
-    const [status, setStatus] = useState(props.status);
+    const [status, setStatus] = useState(propStatus);
+
+    useEffect(() => {
+        setStatus(propStatus);
+    }, [propStatus]);
 
     const activateEditMode = () => {
-        setEditMode(true);
+        if (isOwner) {
+            setEditMode(true);
+        }
     };
 
     const deactivateEditMode = () => {
         setEditMode(false);
+        updateStatus(status);
     };
 
     const onStatusChange = (e) => {
         setStatus(e.target.value);
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            deactivateEditMode();
+        }
     };
 
     return (
@@ -31,6 +44,7 @@ const ProfileStatus = (props) => {
                         onBlur={deactivateEditMode}
                         onChange={onStatusChange}
                         value={status}
+                        onKeyDown={handleKeyPress}
                     />
                 </div>
             )}
