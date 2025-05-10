@@ -1,9 +1,9 @@
 import React from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
+import ProfileReduxForm from "../ProfileForm/ProfileForm";
 
 const MyPosts = (props) => {
-
     let postsElements = props.posts.map(post => (
         <Post
             key={post.id}
@@ -12,38 +12,16 @@ const MyPosts = (props) => {
         />
     ));
 
-    let newPostElement = React.createRef();
-
-    let onAddPost = () => {
-        props.addPost();
-    }
-
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
-    }
+    const onAddPost = (formData) => {
+        props.addPost(formData.newPostText);
+    };
 
     return (
         <div className={classes.content}>
-            <h3>
-                My posts
-            </h3>
-            <div>
-                <textarea
-                    onChange={onPostChange}
-                    ref={newPostElement}
-                    value={props.newPostText}
-                />
-                <div>
-                    <input
-                        type="button"
-                        onClick={onAddPost}
-                        value="Add post"
-                    />
-                </div>
-                <div className={classes.posts}>
-                    {postsElements}
-                </div>
+            <h3>My posts</h3>
+            <ProfileReduxForm onSubmit={onAddPost} />
+            <div className={classes.posts}>
+                {postsElements}
             </div>
         </div>
     );

@@ -21,42 +21,6 @@
     width: 100%;
 }
 
-.dialogsTextarea {
-    width: 100%;
-    height: 100px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    resize: none;
-    box-sizing: border-box;
-}
-
-.dialogsTextarea:focus {
-    border-color: #007bff;
-}
-
-.dialogsButton[type="button"] {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.dialogsButton[type="button"]:hover {
-    background-color: #0056b3;
-}
-
-.dialogsButton[type="button"]:active {
-    transform: scale(0.98);
-}
-
 .selectedPage {
     color: yellow;
     background-color: blue;
@@ -102,16 +66,6 @@
         width: 100%;
     }
 
-    .dialogsTextarea {
-        height: 80px;
-        font-size: 14px;
-    }
-
-    .dialogsButton[type="button"] {
-        width: 100%;
-        padding: 12px;
-    }
-
     .pageButton {
         width: 100%;
         padding: 12px;
@@ -121,14 +75,5 @@
 @media (max-width: 480px) {
     .dialogItem {
         min-width: 100%;
-    }
-
-    .dialogsTextarea {
-        height: 70px;
-        font-size: 12px;
-    }
-
-    .dialogsButton[type="button"] {
-        padding: 10px;
     }
 }
