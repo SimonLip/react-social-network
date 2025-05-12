@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let rerenderEntireTree = (state) => {
     root.render(
-        <BrowserRouter>
+        <BrowserRouter basename="/react-social-network">
             <Provider store={store}>
                 <App
                     state={state}

@@ -2,11 +2,11 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogsItem from './DialogsItem/DialogsItem';
 import DialogsMessage from './DialogsMessage/DialogsMessage';
-import DialogReduxForm from './DialogsForm/DialogsForm';
+import DialogsReduxForm from './DialogsForm/DialogsForm';
 
 const Dialogs = (props) => {
-    let dialogsElements = props.dialogsPage.dialogs.map(dialog =>
-        <DialogsItem name={dialog.name} id={dialog.id} key={dialog.id} />
+    let dialogsElements = props.dialogsPage.dialogs.map(dialogs =>
+        <DialogsItem name={dialogs.name} id={dialogs.id} key={dialogs.id} />
     );
 
     let messagesElements = props.dialogsPage.messages.map(message =>
@@ -17,6 +17,11 @@ const Dialogs = (props) => {
         props.sendMessageClick(formData.message);
     };
 
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.updateNewMessageBody(body);
+    }
+
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogItem}>
@@ -26,7 +31,10 @@ const Dialogs = (props) => {
                 <div>
                     {messagesElements}
                 </div>
-                <DialogReduxForm onSubmit={onSendMessage} />
+                <DialogsReduxForm
+                    onSubmit={onSendMessage}
+                    onNewMessageChange={onNewMessageChange}
+                />
             </div>
         </div>
     );

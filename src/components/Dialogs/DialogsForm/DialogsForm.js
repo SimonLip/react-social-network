@@ -1,6 +1,10 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import classes from "./DialogsForm.module.css";
+import { Textarea } from "../../common/FormsControls/FormsControl";
+import { requiredField, maxLengthCreator } from "../../../validators/validator";
+
+const maxLength100 = maxLengthCreator(100);
 
 let DialogsForm = (props) => {
     return (
@@ -9,8 +13,10 @@ let DialogsForm = (props) => {
                 <Field
                     className={classes.dialogsTextarea}
                     name={"massage"}
-                    component="textarea"
+                    component={Textarea}
                     placeholder="Enter your message"
+                    onChange={props.onNewMessageChange}
+                    validate={[requiredField, maxLength100]}
                 />
 
                 <button
@@ -24,8 +30,8 @@ let DialogsForm = (props) => {
     );
 };
 
-const DialogReduxForm = reduxForm({
+const DialogsReduxForm = reduxForm({
     form: 'dialogs'
 })(DialogsForm);
 
-export default DialogReduxForm;
+export default DialogsReduxForm;

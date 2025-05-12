@@ -1,18 +1,33 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import classes from './ProfileForm.module.css';
+import { requiredField, maxLengthCreator } from '../../../validators/validator';
+import { Textarea } from '../../common/FormsControls/FormsControl';
+
+const maxLength100 = maxLengthCreator(100);
 
 const ProfileForm = (props) => {
+    const { handleSubmit, reset } = props;
+
+    const onSubmit = (formData) => {
+        props.onSubmit(formData);
+        reset();
+    };
+
     return (
-        <form onSubmit={props.handleSubmit} className={classes.profileForm}>
+        <form
+            onSubmit={handleSubmit(onSubmit)}
+            className={classes.profileForm}
+        >
             <Field
                 name="newPostText"
-                component="textarea"
-                className={classes.textarea}
+                component={Textarea}
+                className={classes.profileTextarea}
                 placeholder="Write something..."
+                validate={[requiredField, maxLength100]}
             />
             <div>
-                <button type="submit">Add post</button>
+                <button className={classes.profileButton} type="submit">Add post</button>
             </div>
         </form>
     );

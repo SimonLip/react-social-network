@@ -1,0 +1,54 @@
+.input,
+.textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.error {
+    border-color: #ff0000;
+}
+
+.errorMessage {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.checkboxWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkboxInput {
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff;
+    vertical-align: middle;
+}
+
+.checkboxLabel {
+    font-size: 14px;
+    color: #333;
+    margin-top: 0;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .input,
+    .textarea {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

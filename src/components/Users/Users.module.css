@@ -4,12 +4,17 @@
     border-radius: 50%;
     border: 2px solid #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.userPhoto:hover {
+    transform: scale(1.1);
 }
 
 .selectedPage {
-    color: #ffd700; 
+    color: #ffd700;
     font-weight: bold;
-    background-color: #007acc; 
+    background-color: #007acc;
     border: none;
     padding: 5px 10px;
     border-radius: 8px;
@@ -27,13 +32,13 @@
     padding: 5px 10px;
     border-radius: 6px;
     border: 1px solid #007acc;
-    background-color: #f0f8ff; 
+    background-color: #f0f8ff;
     color: #007acc;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    width: 50px; 
-    height: 30px; 
+    width: 50px;
+    height: 30px;
     text-align: center;
 }
 
@@ -43,12 +48,12 @@
 }
 
 .selectedPage {
-    color: #ffd700; 
+    color: #ffd700;
     font-weight: bold;
-    background-color: #007acc; 
+    background-color: #007acc;
     border: none;
-    width: 50px; 
-    height: 30px; 
+    width: 50px;
+    height: 30px;
     text-align: center;
     cursor: default;
 }
@@ -58,24 +63,23 @@
     padding: 5px 10px;
     border-radius: 6px;
     border: 1px solid #007acc;
-    background-color: #f0f8ff; 
+    background-color: #f0f8ff;
     color: #007acc;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease; 
-    width: 100px;
+    transition: all 0.3s ease;
+    width: 80px;
     height: 40px;
-    text-align: center;
 }
 
 .followButton:hover {
     background-color: #e0f0ff;
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 .followButton:active {
-    transform: scale(1.05); 
-    background-color: #cce7ff; 
+    transform: scale(1.05);
+    background-color: #cce7ff;
 }
 
 .followButton:disabled {
