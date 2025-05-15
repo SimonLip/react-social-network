@@ -29,8 +29,6 @@ let ProfileContainer = (props) => {
         }
     }, [userId]);
 
-
-
     return <Profile
         {...props}
         isOwner={!userId}

@@ -47,7 +47,7 @@
     }
 
     .profileButton {
-        width: 30%;
+        width: 80%;
         padding: 12px;
     }
 }
@@ -59,7 +59,7 @@
     }
 
     button {
-        width: 30%;
+        width: 80%;
         padding: 10px;
     }
 }

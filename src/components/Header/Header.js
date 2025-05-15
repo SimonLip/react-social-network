@@ -13,20 +13,37 @@ const Header = (props) => {
                     alt="logo"
                 />
             </NavLink>
+
             <div className={classes.loginBlock}>
                 {props.isAuth ? (
                     <>
-                        {props.login}
-                        <NavLink to='/profile'>
-                            <img
-                                src={props.profile?.photos?.large || userPhoto}
-                                alt="avatar"
-                                className={classes.avatar}
-                            />
-                        </NavLink>
+                        <div className={classes.userLogoutWrapper}>
+                            <span className={classes.userName}>
+                                <NavLink
+                                    to='/profile'>{props.login}
+                                </NavLink>
+                            </span>
+                            <button
+                                className={classes.logoutButton}
+                                onClick={props.logout}>
+                                Log out
+                            </button>
+                        </div>
+                        <div></div>
+                        <div className={classes.avatarWrapper}>
+                            <NavLink to='/profile'>
+                                <img
+                                    src={props.profile?.photos?.large || userPhoto}
+                                    alt="avatar"
+                                    className={classes.avatar}
+                                />
+                            </NavLink>
+                        </div>
                     </>
                 ) : (
-                    <NavLink to='/login'>Login</NavLink>
+                    <div className={classes.login}>
+                        <NavLink to='/login'>Login</NavLink>
+                    </div>
                 )}
             </div>
         </header>

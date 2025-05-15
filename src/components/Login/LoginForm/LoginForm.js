@@ -9,9 +9,9 @@ let LoginForm = (props) => {
         <form onSubmit={props.handleSubmit} className={classes.loginForm}>
             <div className={classes.formGroup}>
                 <Field
-                    placeholder="Login"
-                    name="login"
-                    component={Input} 
+                    placeholder="Email"
+                    name="email"
+                    component={Input}
                     validate={[requiredField]}
                     className={classes.inputField}
                 />
@@ -35,6 +35,11 @@ let LoginForm = (props) => {
                 />
                 <span className={classes.checkboxLabel}>remember me</span>
             </div>
+            {props.error && (
+                <div className={classes.formSummaryError}>
+                    {props.error}
+                </div>
+            )}
             <button className={classes.button}>Login</button>
         </form>
     );

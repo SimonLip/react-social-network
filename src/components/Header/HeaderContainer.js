@@ -1,20 +1,11 @@
 import React, { useEffect } from 'react';
-import classes from './Header.module.css';
-import Header from './Header';
 import { connect } from 'react-redux';
-import { setAuthUserData, toggleIsFetching } from '../../redux/authReducer';
-import { authAPI } from '../../API/API';
+import Header from './Header';
+import { getAuthUserData, logout } from '../../redux/authReducer';
 
 const HeaderContainer = (props) => {
     useEffect(() => {
-        props.toggleIsFetching(true);
-        authAPI.me().then(response => {
-            if (response.data.resultCode === 0) {
-                const { id, email, login } = response.data.data;
-                props.setAuthUserData(id, email, login);
-            }
-            props.toggleIsFetching(false);
-        });
+        props.getAuthUserData();
     }, []);
 
     return <Header {...props} />;
@@ -23,12 +14,11 @@ const HeaderContainer = (props) => {
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     login: state.auth.login,
-    isFetching: state.auth.isFetching,
 });
 
-const mapDispatchToProps = {
-    setAuthUserData,
-    toggleIsFetching
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
+export default connect(mapStateToProps,
+    {
+        getAuthUserData,
+        logout,
+    }
+)(HeaderContainer);
