@@ -11,6 +11,11 @@ import {
     setTotalUsersCount, toggleIsFetching,
     toggleIsFollowingProgress, getUsersThunkCreator
 } from "../../redux/usersReducer";
+import {
+    getUsers, getPageSize,
+    getTotalUsersCount, getCurrentPage,
+    getIsFetching, getFollowingProgress,
+} from "../../redux/user-selectors";
 
 
 let UsersContainer = (props) => {
@@ -44,15 +49,28 @@ let UsersContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingProgress: state.usersPage.followingInProgress,
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingProgress: getFollowingProgress(state),
 
     }
 }
+
+// let mapStateToProps = (state) => {
+//     return {
+//         users: state.usersPage.users,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         isFetching: state.usersPage.isFetching,
+//         followingProgress: state.usersPage.followingInProgress,
+
+//     }
+// }
+
 
 export default compose(
     connect(mapStateToProps,
