@@ -21,6 +21,7 @@ const App = ({ getAuthUserData, initialized, state }) => {
   }
 
   return (
+    
     <div className='app-wrapper'>
       <HeaderContainer />
       <Navbar sidebar={state.sidebar} />

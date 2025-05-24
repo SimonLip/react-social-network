@@ -2,12 +2,12 @@ import { profileAPI, authAPI } from "../API/API";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const SET_USERS_PROFILE = 'SET_USERS_PROFILE';
-const SET_STATUS = 'SET_STATUS';
+const SET_USERS_PROFILE = 'SET-USERS-PROFILE';
+const SET_STATUS = 'SET-STATUS';
+const DELETE_POST = 'DELETE-POST';
 
 let initialState = {
   posts: [
-    { id: 0, message: "It's my first post!", likesCount: 20 },
     { id: 1, message: "It's my first post!", likesCount: 20 },
     { id: 2, message: "Hi, how are you?", likesCount: 15 },
     { id: 3, message: "It's my first post!", likesCount: 20 },
@@ -56,6 +56,12 @@ const profileReducer = (state = initialState, action) => {
         status: action.status,
       };
 
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(post => post.id !== action.postId),
+      };
+
     default:
       return state;
   }
@@ -79,6 +85,11 @@ export const setUsersProfile = (profile) => ({
 export const setStatus = (status) => ({
   type: SET_STATUS,
   status
+});
+
+export const deletePost = (postId) => ({
+  type: DELETE_POST,
+  postId
 });
 
 export const getUserProfile = (userId) => {

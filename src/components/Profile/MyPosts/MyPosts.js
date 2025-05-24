@@ -19,9 +19,7 @@ const MyPosts = (props) => {
     return (
         <div className={classes.content}>
             <h3>My posts</h3>
-            <ProfileReduxForm
-                onSubmit={onAddPost}
-            />
+            <ProfileReduxForm onSubmit={onAddPost} />
             <div className={classes.posts}>
                 {postsElements}
             </div>
@@ -29,4 +27,4 @@ const MyPosts = (props) => {
     );
 };
 
-export default MyPosts;
+export default React.memo(MyPosts);
